@@ -32,7 +32,7 @@ const ProductDetails = () => {
         setThumbnail(product?.image[0] ? product.image[0] : null)
     }, [product])
     return product && (
-        <div className="mt-12">
+        <div className="mt-[90px]">
             <p>
                 <Link to={'/'}>Home</Link> /
                 <Link to={'/products'}> Products</Link> /

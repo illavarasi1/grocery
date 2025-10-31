@@ -22,7 +22,7 @@ const Navbar = () => {
     }, [searchQuery])
 
     return (
-        <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
+        <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white z-50 transition-all">
 
             <NavLink to={"/"} onClick={() => setOpen(false)}>
                 <img src={logo} alt='logo' className='h-12 w-38' />
@@ -30,7 +30,7 @@ const Navbar = () => {
             </NavLink>
 
             {/* Desktop Menu */}
-            <div className="hidden sm:flex items-center gap-8">
+            <div className="hidden sm:flex items-center gap-8 ">
                 <NavLink to={"/"} className="text-sm hover:text-primary-dull transition">Home</NavLink>
                 <NavLink to={"/products"} className="text-sm hover:text-primary-dull transition">AllProduct</NavLink>
                 <NavLink to={"/contact"} className="text-sm hover:text-primary-dull transition">Contact</NavLink>
@@ -76,12 +76,12 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {open && (
-                <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
+                <div className={`fixed inset-0 bg-white z-50 flex flex-col items-start gap-4 p-6 text-base overflow-y-auto  ${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full  max-h-fit bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
                     <NavLink to={'/'} onClick={() => setOpen(false)}>Home</NavLink>
-                    <NavLink to={'/product'} onClick={() => setOpen(false)}>AllProduct</NavLink>
+                    <NavLink to={'/products'} onClick={() => setOpen(false)}>AllProduct</NavLink>
                     {
                         user &&
-                        <NavLink to={'/order'} onClick={() => setOpen(false)}>MyOrder</NavLink>
+                        <NavLink to={'/myorders'} onClick={() => setOpen(false)}>MyOrder</NavLink>
                     }
                     <NavLink to={'/contect'} onClick={() => setOpen(false)}>contect</NavLink>
                     {!user ? (
